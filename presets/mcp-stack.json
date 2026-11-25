@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "note": "Curated MCP stack. `run` entries are provisioned automatically through a package runner; `manual` entries are staged with their prerequisite check because they need a licensed binary, a running app or a database.",
+  "servers": [
+    {
+      "id": "rea",
+      "name": "REA",
+      "tier": "core",
+      "run": { "command": "npx", "args": ["-y", "rea-agents@6.10.1", "mcp"] },
+      "requires": ["npx"],
+      "docs": "https://github.com/morluto/rea",
+      "reason": "229-tool reverse engineering surface: binaries, .NET, Electron, Android, firmware."
+    },
+    {
+      "id": "context7",
+      "name": "Context7",
+      "tier": "core",
+      "run": { "command": "npx", "args": ["-y", "@upstash/context7-mcp@latest"] },
+      "requires": ["npx"],
+      "docs": "https://github.com/upstash/context7",
+      "reason": "Current library and API documentation, so exploits are not written against a hallucinated version."
+    },
+    {
+      "id": "re-mcp-ghidra",
+      "name": "re-mcp (Ghidra)",
+      "tier": "re",
+      "run": { "command": "uvx", "args": ["--from", "re-mcp-ghidra", "re-mcp-ghidra"] },
+      "requires": ["uvx"],
+      "env": { "GHIDRA_INSTALL_DIR": "" },
+      "docs": "https://github.com/jtsylve/re-mcp",
+      "reason": "IDA and Ghidra behind one interface, with meta-tools for the long tail. Needs Ghidra installed and GHIDRA_INSTALL_DIR set."
+    },
+    {
+      "id": "reva",
+      "name": "ReVa (Ghidra)",
+      "tier": "re",
+      "manual": "Ghidra extension: install the release zip from the repo through Ghidra's File > Install Extensions, then add the MCP command it prints.",
+      "docs": "https://github.com/cyberkaida/reverse-engineering-assistant",
+      "reason": "LLM-first Ghidra tools with context-rot control; best for long firmware sessions."
+    },
+    {
+      "id": "burp",
+      "name": "Burp (official MCP)",
+      "tier": "web",
+      "manual": "Burp Suite: install the official MCP extension from the BApp Store, start Burp, then point OpenHack at the local endpoint it announces.",
+      "requires": ["java"],
+      "docs": "https://portswigger.net/bappstore",
+      "reason": "Proxy history, Repeater, Intruder, scanner and Collaborator (out-of-band callbacks)."
+    },
+    {
+      "id": "burp-collab",
+      "name": "burp-mcp (61 tools)",
+      "tier": "web",
+      "manual": "Alternative to the official bridge: install the Java extension into Burp Pro and run the Python server. Collaborator polling is the reason to prefer this one for blind bugs.",
+      "requires": ["python"],
+      "docs": "https://github.com/Den-Sec/burp-mcp",
+      "reason": "61 tools including Collaborator generate/poll, decoder, comparer and Intruder results."
+    },
+    {
+      "id": "hexstrike",
+      "name": "HexStrike AI",
+      "tier": "breadth",
+      "manual": "Clone the repo and run its MCP server with the path to hexstrike_mcp.py; it expects its own tool bundle on the same host.",
+      "requires": ["python"],
+      "docs": "https://github.com/0x4m4/hexstrike-ai",
+      "reason": "150+ security tools behind one door; breadth when a target is unfamiliar."
+    },
+    {
+      "id": "jadx",
+      "name": "jadx MCP",
+      "tier": "re",
+      "manual": "Install the jadx plugin from the repo, open the APK in jadx, then add the HTTP MCP endpoint it exposes.",
+      "requires": ["java"],
+      "docs": "https://github.com/zinja-coder/jadx-mcp-server",
+      "reason": "Android decompilation and manifest inspection for mobile bounty targets."
+    }
+  ]
+}

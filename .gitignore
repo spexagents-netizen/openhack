@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+
+# build output
+out/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# release artifacts and bundles (the tester bundle carries API keys)
+release/
+!release/.gitkeep
+
+# local runtime state
+*.sqlite
+*.sqlite-journal
+*.log
+audit.log
+artifacts/
+
+# secrets
+.env
+.env.*
+*.key
+*.pem
+secrets/
+config.json
+profiles/*.secret.json
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

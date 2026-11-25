@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#242427" />
+      <stop offset="1" stop-color="#191a1c" />
+    </linearGradient>
+    <radialGradient id="bloom" cx="0.5" cy="0.42" r="0.52">
+      <stop offset="0" stop-color="#ff5d3a" stop-opacity="0.22" />
+      <stop offset="1" stop-color="#ff5d3a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- plate -->
+  <rect width="512" height="512" rx="112" fill="url(#plate)" />
+  <rect x="1.5" y="1.5" width="509" height="509" rx="110.5" fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="3" />
+  <circle cx="256" cy="238" r="188" fill="url(#bloom)" />
+
+  <!-- mark: one continuous stroke, two eyes -->
+  <path d="M178 148v126a78 78 0 0 0 156 0V148"
+        fill="none" stroke="#ff5d3a" stroke-width="30" stroke-linecap="square" />
+  <circle cx="214" cy="212" r="15" fill="#ff5d3a" />
+  <circle cx="298" cy="212" r="15" fill="#ff5d3a" />
+</svg>

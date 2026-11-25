@@ -1,0 +1,37 @@
+appId: ai.openhack.desktop
+productName: OpenHack
+copyright: Copyright © 2026 OpenHack
+directories:
+  output: release
+files:
+  - out/**/*
+  - assets/**/*
+  - package.json
+extraResources:
+  - from: skills
+    to: skills
+    filter:
+      - "**/*"
+  - from: presets
+    to: presets
+    filter:
+      - "**/*"
+asar: true
+asarUnpack:
+  - node_modules/sql.js/dist/*.wasm
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: assets/icon.ico
+  artifactName: OpenHack-Setup-${version}.${ext}
+  executableName: OpenHack
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: OpenHack
+  uninstallDisplayName: OpenHack
+  license: LICENSE.txt
